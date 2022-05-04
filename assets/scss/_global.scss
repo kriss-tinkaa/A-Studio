@@ -1,0 +1,286 @@
+body {
+    font: 400 16px/1 $f-main;
+    color: $c-main;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main{
+    flex: 1;
+  }
+
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    @media screen and (max-width: 1200px){
+      max-width: 90%;
+    }
+    &--full{
+      max-width: 100%;
+    }
+}
+
+  a{
+    color: $c-main;
+  }
+
+.btn {
+    @include d-flex(center, center);
+    @include border-radius(sm);
+    font: 400 1.25rem/1.25  $f-main;
+    background: $c-main-button;
+    color: #FFFFFF;
+    padding: 20px 40px;
+    letter-spacing: 0.065em;
+    @media screen and (max-width: 1200px) {
+
+    }
+    @media screen and (max-width: 1024px) {
+      padding: 7px 10px;
+      min-width: 160px;
+    }
+  }
+
+// BANNER SECTION
+
+.main-banner{
+  @include d-flex();
+  padding-bottom: 100px;
+  margin-bottom: 40px;
+  &__text{
+    width: 50%;
+    position: relative;
+    &::after{
+      @include pseudo(block, absolute, url('./../images/bg-dots.svg'));
+      z-index: -1;
+      top: 87%;
+    }
+  }
+
+  &__image{
+    width: 50%;
+    position: relative;
+    &:before{
+      @include pseudo();
+      @include border-radius(md);
+      width: 129px;
+      height: 129px;
+      background: #DAE9FF;
+      z-index: -1;
+      left: -65px;
+    }
+    &:after{
+      @include pseudo();
+      background: #FFF5DB;
+      border-radius: 0px 0px 100px 0px;
+      width: 178px;
+      height: 178px;
+      right: 120px;
+      top: 80%;
+      z-index: -1;
+    }
+  }
+  &__title{
+    margin-bottom: 40px;
+  }
+  &__content{
+    max-width: 470px;
+    width: 100%;
+    margin-bottom: 33px;
+  }
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    &__text{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    &__image{
+      width: 100%;
+    }
+  }
+}
+
+// OUR CLIENT SECTION
+.clients{
+  margin-bottom: 90px;
+  &-row{
+    @include d-flex(center);
+    margin-bottom: 8px;
+  }
+  &__desc{
+    font: 400 1.125rem/1.61 $f-main;
+    color: $c-text;
+    max-width: 340px;
+    width: 100%;
+  }
+  &__logo{
+    @include d-flex();
+    max-width: calc(100% - 400px);
+    width: 100%;
+    
+  }
+  &__img{
+    width: 25%;
+    img{
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    &__logo{
+      flex-wrap: wrap;
+    }
+    &__img{
+      width: 50%;
+      margin-bottom: 12px;
+    }
+  }
+  @media screen and (max-width: 767px){
+    &-row{
+      flex-direction: column;
+    }
+    &__desc{
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+    &__logo{
+      max-width: 100%;
+      justify-content: space-around;
+    }
+    &__img{
+      width: 50%;
+    }
+  }
+}
+
+// BUSINESS SECTION
+.business{
+  @include d-flex();
+  position: relative;
+  &:before{
+    @include pseudo(block, absolute, url('./../images/bg-dots.svg'));
+    left: 0;
+    bottom: 0;
+    z-index: -3;
+  }
+  &__text{
+    max-width: 400px;
+    width: 100%;
+   
+    .title{
+      margin-bottom: 30px;
+      position: relative;
+      &:before{
+        @include pseudo();
+        top: -58px;
+        left: -58px;
+        z-index: -1;
+        width: 178px;
+        height: 178px;
+        background: #FFF5DB; 
+        border-radius: 0px 0px 100px 0px;
+        transform: rotate(-180deg);
+      }
+    }
+    
+  }
+  &__blocks{
+    @include d-flex(center, center);
+    flex-wrap: wrap;
+    max-width: calc(100% - 420px);
+    width: 100%;
+    position: relative;
+    &:before{
+      @include pseudo();
+      background: #F4F9FF;
+      border-radius: 150px 0px 0px 0px;
+      width: 1047px;
+      height: 619px;
+      z-index: -1;
+    }
+    &:after{
+      @include pseudo();
+      @include border-radius(md);
+      width: 120px;
+      height: 120px;
+      z-index: -2;
+      border: 8.8px solid #FF007A;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  @media screen and (max-width: 1200px){
+    flex-direction: column;
+    overflow: hidden;
+    &__text{
+      max-width: 100%;
+      margin-bottom: 20px;
+      .title{
+        &:before{
+          display: none;
+        }
+      }
+    }
+    &__blocks{
+      max-width: 100%;
+    }
+  }
+  @media screen and (max-width: 767px){
+    &__blocks{
+      max-width: 100%;
+      background-color: #F4F9FF;
+      &:before{
+        display: none;
+      }
+      &:after{
+        bottom: inherit;
+        top: 0;
+        right: -51px;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+.business-block{
+  max-width: 308px;
+  background: #FFFFFF;
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  padding: 40px;
+  margin: 15px;
+  &__image{
+    @include border-radius(20px);
+    @include d-flex(center, center);
+    width: 121px;
+    height: 121px;
+    margin: 0 auto 30px;
+    &.blue{
+      background: #F1F7FF;
+    }
+    &.orange{
+      background: #FFF7E3;
+    }
+    &.pink{
+      background: #FFF2F8;
+    }
+    &.green{
+      background: #DEFFEE;
+    }
+  }
+  &__title{
+    font: 600 1.5rem/1.25 $f-main;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+  &__text{
+    font: 400 1rem/1.375 $f-main;
+    text-align: center;
+    color: $c-text;
+  }
+}

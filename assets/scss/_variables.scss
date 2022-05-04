@@ -1,0 +1,67 @@
+
+/* font */
+
+$f-main:        'Averta Demo PE Cutted Demo', sans-serif;
+$f-secondary:   'Lato', sans-serif;
+
+/* colors */
+
+$c-main:            #000000;
+$c-secondary:       #565656;
+$c-text:            #757575;
+$c-main-button:     #2639ED;
+
+// $c-surface:           #9E9E9E;
+// $c-backgroung:        #FAFAFA;
+// $c-backgroung-hover:  #F5F5F5;
+// $c-light-grey:        #757575;
+// $c-dark-grey:         #333333;
+// $c-border:            #E0E0E0;
+// $c-border-grey:       #BDBDBD;
+// $c-disable:           #EEEEEE;
+
+// $c-red:               #C1403F;
+// $c-green:             #46B80F;
+// $c-yellow:            #EDDB3A; 
+
+
+
+/* mixins */
+
+@mixin d-flex($align-item: center, $justify-content: space-between) {
+    display: flex;
+    align-items: $align-item;
+    justify-content: $justify-content;
+  }
+
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+   content: $content;
+   display: $display;
+   position: $pos;
+ }
+
+
+// xs = 40px;
+// sm = 60px
+// md = 50%
+
+@mixin border-radius($radius: xs) {
+  @if $radius == xs {
+    border-radius: 40px;
+  } @else if $radius == sm {
+    border-radius: 60px;
+  } @else if $radius == md {
+    border-radius: 50%;
+  } @else {
+    border-radius: $radius;
+  }
+}
+
+// @mixin position($position, $top: inherit, $right: inherit, $bottom: inherit, $left: inherit) {
+//   position: $position;
+//   top: $top;
+//   right: $right;
+//   bottom: $bottom;
+//   left: $left;
+// }

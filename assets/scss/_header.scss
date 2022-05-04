@@ -1,0 +1,36 @@
+.header{
+    @include d-flex(center, space-between);
+    padding: 42px 0 40px;
+    font-size: 14px;
+    &-logo{
+        min-width: 100px
+    }
+}
+
+.menu{
+    ul{
+        @include d-flex(center, inherit);
+        li{
+            font: 600 1rem/1.25 $f-main;
+            letter-spacing: 0.01em;
+            margin: 0 30px;
+        }
+    }
+    @media screen and (max-width: 991px){
+        display: none;
+    }
+}
+
+.mobile-menu{
+    display: none;
+    span{
+        display: block;
+        height: 2px;
+        background: #21395F;
+        width: 28px;
+        margin-bottom: 5px;
+    }
+    @media screen and (max-width: 991px){
+        display: block;
+    }
+}
