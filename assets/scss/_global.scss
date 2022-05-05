@@ -9,6 +9,10 @@ body {
     flex: 1;
   }
 
+  section{
+    margin: 20px 0;
+  }
+
 .container{
     max-width: 1200px;
     width: 100%;
@@ -160,6 +164,7 @@ body {
 .business{
   @include d-flex();
   position: relative;
+  margin-bottom: 100px;
   &:before{
     @include pseudo(block, absolute, url('./../images/bg-dots.svg'));
     left: 0;
@@ -282,5 +287,58 @@ body {
     font: 400 1rem/1.375 $f-main;
     text-align: center;
     color: $c-text;
+  }
+}
+// VIDEO SECTION
+
+.video-and-text{
+  @include d-flex();
+  margin-bottom: 100px;
+  &__video{
+    max-width: 45%;
+    width: 100%;
+    position: relative;
+    &::after{
+      @include pseudo();
+      @include border-radius(md);
+      width: 129px;
+      height: 129px;
+      right: -51px;
+      bottom: -51px;
+      z-index: -1;
+      background: #FFF5DB;
+    }
+    iframe{
+      width: 100%;
+      box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+      border-radius: 32px;
+    }
+  }
+  &__content{
+    max-width: 45%;
+  }
+}
+
+// HAPPY CLIENTS SECTION
+
+.happy-clients{
+  &-title{
+    text-align: center;
+    margin-bottom: 70px;
+    .title{
+      text-align: center;
+      margin-bottom: 17px;
+    }
+  }
+  &-slider{
+    @include d-flex();
+    .slider{
+      max-width: 65%;
+      width: 100%;
+    }
+    .clients-images{
+      max-width: 32%;
+      width: 100%;
+    }
   }
 }
