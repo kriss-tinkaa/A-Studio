@@ -14,6 +14,15 @@
             font: 600 1rem/1.25 $f-main;
             letter-spacing: 0.01em;
             margin: 0 30px;
+            border-bottom: 2px solid transparent;
+            transition: all 1s ease-in;
+            &:hover{
+                a{
+                    color: $c-main-button;
+                }
+                cursor: pointer;
+                border-color: $c-main-button;
+            }
         }
     }
     @media screen and (max-width: 991px){

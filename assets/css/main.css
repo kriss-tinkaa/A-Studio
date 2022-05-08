@@ -39,6 +39,11 @@ input, button, textarea, select {
   font: inherit;
 }
 
+input,
+input:focus {
+  outline: none;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
@@ -84,7 +89,8 @@ main {
 }
 
 section {
-  margin: 20px 0;
+  margin: 40px 0;
+  padding: 40px 0;
 }
 
 .container {
@@ -205,13 +211,27 @@ a {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding-bottom: 0;
   }
   .main-banner__text {
     width: 100%;
     margin-bottom: 20px;
   }
+  .main-banner__text::after {
+    -webkit-transform: scale(0.65);
+            transform: scale(0.65);
+    top: 49%;
+  }
   .main-banner__image {
     width: 100%;
+  }
+  .main-banner__image::before {
+    left: -18px;
+    top: -39px;
+  }
+  .main-banner__image::after {
+    right: 10px;
+    top: 51%;
   }
 }
 
@@ -368,7 +388,7 @@ a {
   position: absolute;
   background: #F4F9FF;
   border-radius: 150px 0px 0px 0px;
-  width: 1047px;
+  width: calc(100% + 20px);
   height: 619px;
   z-index: -1;
 }
@@ -522,6 +542,25 @@ a {
   max-width: 45%;
 }
 
+@media screen and (max-width: 767px) {
+  .video-and-text {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .video-and-text__video {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+  .video-and-text__video::after {
+    right: -15px;
+  }
+  .video-and-text__content {
+    max-width: 100%;
+  }
+}
+
 .happy-clients-title {
   text-align: center;
   margin-bottom: 70px;
@@ -532,7 +571,7 @@ a {
   margin-bottom: 17px;
 }
 
-.happy-clients-slider {
+.happy-clients-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -544,14 +583,319 @@ a {
           justify-content: space-between;
 }
 
+.happy-clients-slider {
+  max-width: 60%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
 .happy-clients-slider .slider {
-  max-width: 65%;
   width: 100%;
 }
 
 .happy-clients-slider .clients-images {
   max-width: 32%;
   width: 100%;
+}
+
+.happy-clients-slider .slick-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 400px;
+  bottom: 25px;
+}
+
+.happy-clients-slider .slick-dots li {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 0 12px;
+  background: #E7F0FC;
+}
+
+.happy-clients-slider .slick-dots li:hover {
+  cursor: pointer;
+  border-color: #2639ED;
+}
+
+.happy-clients-slider .slick-dots li.slick-active {
+  background: #2639ED;
+}
+
+.happy-clients-slider .slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+}
+
+.happy-clients-photos {
+  position: relative;
+  max-width: 35%;
+  min-height: 380px;
+  width: 100%;
+}
+
+.happy-clients-photos::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  width: 184px;
+  height: 184px;
+  left: 13%;
+  top: 32%;
+  z-index: -1;
+  background: #FFF5DB;
+}
+
+.happy-clients-photos img {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.happy-clients-photos img:first-child {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.happy-clients-photos img:nth-child(2) {
+  left: 48%;
+  top: 0;
+}
+
+.happy-clients-photos img:nth-child(3) {
+  right: 9px;
+  top: 50px;
+}
+
+.happy-clients-photos img:nth-child(4) {
+  left: 62px;
+  top: 46px;
+}
+
+.happy-clients-photos img:nth-child(5) {
+  right: 13px;
+  top: 43%;
+}
+
+.happy-clients-photos img:nth-child(6) {
+  right: 84px;
+  top: 75%;
+}
+
+.happy-clients-photos img:nth-child(7) {
+  left: 30%;
+  bottom: 0;
+}
+
+.happy-clients-photos img:nth-child(8) {
+  left: 0;
+  bottom: 33%;
+}
+
+@media screen and (max-width: 1200px) {
+  .happy-clients-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .happy-clients-slider {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+  .happy-clients-slider .slick-dots {
+    position: static;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 1rem auto 30px;
+  }
+  .happy-clients-photos {
+    max-width: 400px;
+  }
+}
+
+.person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.person__photo {
+  width: 380px;
+  height: 380px;
+}
+
+.person__photo img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 500px 0px 500px 500px;
+}
+
+.person__information {
+  width: calc(100% - 420px);
+}
+
+.person__information .title {
+  font: 600 1.5rem/1.25 "Averta Demo PE Cutted Demo", sans-serif;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.person__information .text {
+  line-height: 1.6;
+  color: #565656;
+}
+
+@media screen and (max-width: 767px) {
+  .person {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .person__photo {
+    width: 320px;
+    height: 320px;
+  }
+  .person__information {
+    width: 100%;
+  }
+}
+
+.newsletter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #F4F9FF;
+  border-radius: 75px;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.newsletter:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 178px;
+  height: 178px;
+  z-index: -1;
+  left: -30px;
+  bottom: -30px;
+  background: #FFF5DB;
+  border-radius: 0px 0px 100px 0px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.newsletter__content {
+  width: 50%;
+  padding: 100px 20px 100px 100px;
+}
+
+.newsletter__content .title {
+  margin-bottom: 1rem;
+}
+
+.newsletter__content .subtitle {
+  font: 400 1.125rem/1.61 "Averta Demo PE Cutted Demo", sans-serif;
+  color: #757575;
+}
+
+.newsletter__form {
+  width: 45%;
+  border-radius: 122px 75px 75px 62px;
+  min-height: 300px;
+  background: #2639ED;
+  position: relative;
+}
+
+.newsletter__form .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  width: 90%;
+  left: -20px;
+  top: 50%;
+  -webkit-transform: translate(-45px, -51%);
+          transform: translate(-45px, -51%);
+  background: #FFFFFF;
+  border: 1px solid #F1F1F1;
+  padding: 10px;
+  -webkit-box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+          box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 60px;
+}
+
+.newsletter__form .input-wrapper input {
+  padding-left: 34px;
+}
+
+@media screen and (max-width: 767px) {
+  .newsletter {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .newsletter__content {
+    width: 100%;
+    padding: 50px 40px 20px;
+  }
+  .newsletter__content .title {
+    text-align: center;
+  }
+  .newsletter__form {
+    width: 100%;
+    padding: 100px 0;
+  }
+  .newsletter__form .input-wrapper {
+    position: static;
+    -webkit-transform: translate(15px, 0);
+            transform: translate(15px, 0);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .newsletter__form .input-wrapper input {
+    height: 26px;
+    margin: 8px 0;
+  }
 }
 
 .header {
@@ -588,6 +932,18 @@ a {
   font: 600 1rem/1.25 "Averta Demo PE Cutted Demo", sans-serif;
   letter-spacing: 0.01em;
   margin: 0 30px;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+
+.menu ul li:hover {
+  cursor: pointer;
+  border-color: #2639ED;
+}
+
+.menu ul li:hover a {
+  color: #2639ED;
 }
 
 @media screen and (max-width: 991px) {
@@ -612,5 +968,121 @@ a {
   .mobile-menu {
     display: block;
   }
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #E4E4E4;
+  border-bottom: 1px solid #E4E4E4;
+  padding: 60px 0;
+}
+
+.footer__information {
+  width: 40%;
+}
+
+.footer__menu {
+  width: 55%;
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .footer__information {
+    width: 100%;
+  }
+  .footer__menu {
+    width: 100%;
+  }
+}
+
+.footer-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer-menu-group__title {
+  font: 600 1.25rem/1.25 "Averta Demo PE Cutted Demo", sans-serif;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+.footer-menu-group__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: inherit;
+      -ms-flex-pack: inherit;
+          justify-content: inherit;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer-menu-group__links a {
+  font: 400 0.875rem/2 "Averta Demo PE Cutted Demo", sans-serif;
+  color: #000000;
+}
+
+@media screen and (max-width: 767px) {
+  .footer-menu {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .footer-menu-group {
+    width: 49%;
+    margin-bottom: 16px;
+  }
+}
+
+.footer-info__logo {
+  margin-bottom: 26px;
+}
+
+.footer-info__desc {
+  font: 0.875rem/1.57 "Averta Demo PE Cutted Demo", sans-serif;
+  color: #565656;
+  margin-bottom: 40px;
+  max-width: 270px;
+}
+
+.footer-info__socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
+  -webkit-box-pack: inherit;
+      -ms-flex-pack: inherit;
+          justify-content: inherit;
+}
+
+.footer-info__socials a {
+  margin-right: 16px;
 }
 /*# sourceMappingURL=main.css.map */

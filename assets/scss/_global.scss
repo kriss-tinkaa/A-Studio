@@ -10,7 +10,8 @@ body {
   }
 
   section{
-    margin: 20px 0;
+    margin: 40px 0;
+    padding: 40px 0;
   }
 
 .container{
@@ -95,12 +96,25 @@ body {
   }
   @media screen and (max-width: 767px){
     flex-direction: column;
+    padding-bottom: 0;
     &__text{
       width: 100%;
       margin-bottom: 20px;
+      &::after{
+        transform: scale(.65);
+        top: 49%;
+      }
     }
     &__image{
       width: 100%;
+      &::before{
+        left: -18px;
+        top: -39px;
+      }
+      &::after{
+        right: 10px;
+        top: 51%;
+      }
     }
   }
 }
@@ -202,7 +216,7 @@ body {
       @include pseudo();
       background: #F4F9FF;
       border-radius: 150px 0px 0px 0px;
-      width: 1047px;
+      width: calc(100% + 20px);
       height: 619px;
       z-index: -1;
     }
@@ -317,6 +331,19 @@ body {
   &__content{
     max-width: 45%;
   }
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    &__video{
+      max-width: 100%;
+      margin-bottom: 24px;
+      &::after{
+        right: -15px;
+      }
+    }
+    &__content{
+      max-width: 100%;
+    }
+  }
 }
 
 // HAPPY CLIENTS SECTION
@@ -330,15 +357,227 @@ body {
       margin-bottom: 17px;
     }
   }
-  &-slider{
+  &-row{
     @include d-flex();
+  }
+  &-slider{
+    max-width: 60%;
+    width: 100%;
+    @include d-flex();
+    position: relative;
     .slider{
-      max-width: 65%;
-      width: 100%;
+     width: 100%;
     }
     .clients-images{
       max-width: 32%;
       width: 100%;
+    }
+    .slick-dots{
+      display: flex;
+      position: absolute;
+      left: 400px;
+      bottom: 25px;
+      li{
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        margin: 0 12px;
+        background: #E7F0FC;
+        &:hover{
+          cursor: pointer;
+          border-color: $c-main-button;
+        }
+        &.slick-active{
+          background: $c-main-button;
+        }
+        button{
+          font-size: 0;
+          line-height: 0;
+        }
+      }
+    }
+  }
+  &-photos{
+    position: relative;
+    max-width: 35%;
+    min-height: 380px;
+    width: 100%;
+    &::after{
+      @include pseudo ();
+      @include border-radius(md);
+      width: 184px;
+      height: 184px;
+      left: 13%;
+      top: 32%;
+      z-index: -1;
+      background: #FFF5DB;
+    }
+    img{
+      position: absolute;
+      @include border-radius(md);
+      &:first-child{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:nth-child(2){
+        left: 48%;
+        top: 0;
+      }
+      &:nth-child(3){
+        right: 9px;
+        top: 50px;
+      }
+      &:nth-child(4){
+        left: 62px;
+        top: 46px;
+      }
+      &:nth-child(5){
+        right: 13px;
+        top: 43%;
+      }
+      &:nth-child(6){
+        right: 84px;
+        top: 75%;
+      }
+      &:nth-child(7){
+        left: 30%;
+        bottom: 0;
+      }
+      &:nth-child(8){
+        left: 0;
+        bottom: 33%;
+      }
+    }
+  }
+  @media screen and (max-width: 1200px){
+    &-row{
+      flex-direction: column;
+    }
+    &-slider{
+      max-width: 100%;
+      margin-bottom: 24px;
+      .slick-dots{
+        position: static;
+        justify-content: center;
+        margin: 1rem auto 30px;
+      }
+    }
+    &-photos{
+      max-width: 400px;
+    }
+  }
+  
+}
+.person{
+  @include d-flex();
+  &__photo{
+    width: 380px;
+    height: 380px;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 500px 0px 500px 500px;
+    }
+  }
+  &__information{
+    width: calc(100% - 420px);
+    .title{
+      font: 600 1.5rem/1.25 $f-main;
+      margin-bottom: 20px;
+      color: $c-main;
+    }
+    .text{
+      line-height: 1.6;
+      color: $c-secondary;
+    }
+  }
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    &__photo{
+      width: 320px;
+      height: 320px;
+    }
+    &__information{
+      width: 100%;
+    }
+  }
+}
+
+// NEWSLETTER SECTION
+.newsletter{
+  @include d-flex();
+  background: #F4F9FF;
+  border-radius: 75px;
+  position: relative;
+  padding-bottom: 100px;
+  &:before{
+    @include pseudo();
+    width: 178px;
+    height: 178px;
+    z-index: -1;
+    left: -30px;
+    bottom: -30px;
+    background: #FFF5DB;
+    border-radius: 0px 0px 100px 0px;
+    transform: rotate(90deg);
+  }
+  &__content{
+    width: 50%;
+    padding: 100px 20px 100px 100px;
+    .title{
+      margin-bottom: 1rem;
+    }
+    .subtitle{
+      font: 400 1.125rem/1.61 $f-main;
+      color: $c-text;
+    }
+  }
+  &__form{
+    width: 45%;
+    border-radius: 122px 75px 75px 62px;
+    min-height: 300px;
+    background: $c-main-button;
+    position: relative;
+    .input-wrapper{
+      @include d-flex();
+      position: absolute;
+      width: 90%;
+      left: -20px;
+      top: 50%;
+      transform: translate(-45px, -51%);
+      background: #FFFFFF;
+      border: 1px solid #F1F1F1;
+      padding: 10px;
+      box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
+      border-radius: 60px;
+      input{
+        padding-left: 34px;
+      }
+    }
+  }
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    &__content{
+      width: 100%;
+      padding: 50px 40px 20px;
+      .title{
+        text-align: center;
+      }
+    }
+    &__form{
+      width: 100%;
+      padding: 100px 0;
+      .input-wrapper{
+        position: static;
+        transform: translate(15px, 0);
+        flex-direction: column;
+        input{
+          height: 26px;
+          margin: 8px 0;
+        }
+      }
     }
   }
 }
