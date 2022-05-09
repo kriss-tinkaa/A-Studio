@@ -1,33 +1,60 @@
 body {
-    font: 400 16px/1 $f-main;
-    color: $c-main;
-    display: flex;
-    flex-direction: column;
+  @include d-flex-col();
+  position: relative;
+  font: 400 16px/1 $f-main;
+  background-color: $bg-main;  
+  color: $c-main;
+  &.hide{
+    overflow: hidden;
+  }
   }
 
   main{
-    flex: 1;
-  }
+    flex: 1; 
+  } 
 
   section{
     margin: 40px 0;
     padding: 40px 0;
+    &.m-0{
+      margin: 0;
+      padding: 0;
+    }
+    .section{
+      &-title{
+        font: 600 3.125rem/1.125 $f-main;
+        color: $c-main;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      &-subtitle{
+          font: 400 1.5625rem/1.68 $f-main;
+          color: $c-main;
+          text-align: center;
+          opacity: 0.5;
+          margin-bottom: 40px;
+      }
+    }
   }
 
 .container{
-    max-width: 1200px;
+    max-width: 1736px;
     width: 100%;
     margin: 0 auto;
+    &--sm{
+      max-width: 980px;
+    }
     @media screen and (max-width: 1200px){
       max-width: 90%;
-    }
-    &--full{
-      max-width: 100%;
     }
 }
 
   a{
     color: $c-main;
+    &:hover{
+      cursor: pointer;
+      color: $c-main-button;
+    }
   }
 
 .btn {
@@ -49,42 +76,26 @@ body {
 
 // BANNER SECTION
 
+#home{
+  height: 100vh;
+  background-image: url('./../images/bg-main.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+  margin: 0;
+}
 .main-banner{
   @include d-flex();
-  padding-bottom: 100px;
-  margin-bottom: 40px;
+  padding-top: 100px;
+  
+  
   &__text{
     width: 50%;
     position: relative;
-    &::after{
-      @include pseudo(block, absolute, url('./../images/bg-dots.svg'));
-      z-index: -1;
-      top: 87%;
-    }
   }
 
   &__image{
     width: 50%;
     position: relative;
-    &:before{
-      @include pseudo();
-      @include border-radius(md);
-      width: 129px;
-      height: 129px;
-      background: #DAE9FF;
-      z-index: -1;
-      left: -65px;
-    }
-    &:after{
-      @include pseudo();
-      background: #FFF5DB;
-      border-radius: 0px 0px 100px 0px;
-      width: 178px;
-      height: 178px;
-      right: 120px;
-      top: 80%;
-      z-index: -1;
-    }
   }
   &__title{
     margin-bottom: 40px;
@@ -97,487 +108,27 @@ body {
   @media screen and (max-width: 767px){
     flex-direction: column;
     padding-bottom: 0;
-    &__text{
-      width: 100%;
-      margin-bottom: 20px;
-      &::after{
-        transform: scale(.65);
-        top: 49%;
-      }
-    }
-    &__image{
-      width: 100%;
-      &::before{
-        left: -18px;
-        top: -39px;
-      }
-      &::after{
-        right: 10px;
-        top: 51%;
-      }
-    }
   }
 }
 
-// OUR CLIENT SECTION
-.clients{
-  margin-bottom: 90px;
-  &-row{
-    @include d-flex(center);
-    margin-bottom: 8px;
-  }
-  &__desc{
-    font: 400 1.125rem/1.61 $f-main;
-    color: $c-text;
-    max-width: 340px;
-    width: 100%;
-  }
-  &__logo{
-    @include d-flex();
-    max-width: calc(100% - 400px);
-    width: 100%;
-    
-  }
-  &__img{
-    width: 25%;
-    img{
-      max-width: 150px;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    &__logo{
-      flex-wrap: wrap;
-    }
-    &__img{
-      width: 50%;
-      margin-bottom: 12px;
-    }
-  }
-  @media screen and (max-width: 767px){
-    &-row{
-      flex-direction: column;
-    }
-    &__desc{
-      max-width: 100%;
-      margin-bottom: 20px;
-    }
-    &__logo{
-      max-width: 100%;
-      justify-content: space-around;
-    }
-    &__img{
-      width: 50%;
-    }
+// marquee SECTION
+
+.marquee {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #5A4039;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  padding: 10px 0;
+  span {
+    display: inline-block;
+    text-transform: uppercase;
+    padding-left: 100%;
+    color: rgba(255, 245, 0, 0.6);
+    -webkit-animation: scroll 5s infinite linear;
+    -moz-animation: scroll 5s infinite linear;
+    animation: scroll 5s infinite linear;
   }
 }
 
-// BUSINESS SECTION
-.business{
-  @include d-flex();
-  position: relative;
-  margin-bottom: 100px;
-  &:before{
-    @include pseudo(block, absolute, url('./../images/bg-dots.svg'));
-    left: 0;
-    bottom: 0;
-    z-index: -3;
-  }
-  &__text{
-    max-width: 400px;
-    width: 100%;
-   
-    .title{
-      margin-bottom: 30px;
-      position: relative;
-      &:before{
-        @include pseudo();
-        top: -58px;
-        left: -58px;
-        z-index: -1;
-        width: 178px;
-        height: 178px;
-        background: #FFF5DB; 
-        border-radius: 0px 0px 100px 0px;
-        transform: rotate(-180deg);
-      }
-    }
-    
-  }
-  &__blocks{
-    @include d-flex(center, center);
-    flex-wrap: wrap;
-    max-width: calc(100% - 420px);
-    width: 100%;
-    position: relative;
-    &:before{
-      @include pseudo();
-      background: #F4F9FF;
-      border-radius: 150px 0px 0px 0px;
-      width: calc(100% + 20px);
-      height: 619px;
-      z-index: -1;
-    }
-    &:after{
-      @include pseudo();
-      @include border-radius(md);
-      width: 120px;
-      height: 120px;
-      z-index: -2;
-      border: 8.8px solid #FF007A;
-      bottom: 0;
-      right: 0;
-    }
-  }
-  @media screen and (max-width: 1200px){
-    flex-direction: column;
-    overflow: hidden;
-    &__text{
-      max-width: 100%;
-      margin-bottom: 20px;
-      .title{
-        &:before{
-          display: none;
-        }
-      }
-    }
-    &__blocks{
-      max-width: 100%;
-    }
-  }
-  @media screen and (max-width: 767px){
-    &__blocks{
-      max-width: 100%;
-      background-color: #F4F9FF;
-      &:before{
-        display: none;
-      }
-      &:after{
-        bottom: inherit;
-        top: 0;
-        right: -51px;
-        z-index: 0;
-      }
-    }
-  }
-}
-
-.business-block{
-  max-width: 308px;
-  background: #FFFFFF;
-  border: 1px solid #F2F2F2;
-  box-sizing: border-box;
-  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.05);
-  border-radius: 40px;
-  padding: 40px;
-  margin: 15px;
-  &__image{
-    @include border-radius(20px);
-    @include d-flex(center, center);
-    width: 121px;
-    height: 121px;
-    margin: 0 auto 30px;
-    &.blue{
-      background: #F1F7FF;
-    }
-    &.orange{
-      background: #FFF7E3;
-    }
-    &.pink{
-      background: #FFF2F8;
-    }
-    &.green{
-      background: #DEFFEE;
-    }
-  }
-  &__title{
-    font: 600 1.5rem/1.25 $f-main;
-    text-align: center;
-    margin-bottom: 26px;
-  }
-  &__text{
-    font: 400 1rem/1.375 $f-main;
-    text-align: center;
-    color: $c-text;
-  }
-}
-// VIDEO SECTION
-
-.video-and-text{
-  @include d-flex();
-  margin-bottom: 100px;
-  &__video{
-    max-width: 45%;
-    width: 100%;
-    position: relative;
-    &::after{
-      @include pseudo();
-      @include border-radius(md);
-      width: 129px;
-      height: 129px;
-      right: -51px;
-      bottom: -51px;
-      z-index: -1;
-      background: #FFF5DB;
-    }
-    iframe{
-      width: 100%;
-      box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
-      border-radius: 32px;
-    }
-  }
-  &__content{
-    max-width: 45%;
-  }
-  @media screen and (max-width: 767px){
-    flex-direction: column;
-    &__video{
-      max-width: 100%;
-      margin-bottom: 24px;
-      &::after{
-        right: -15px;
-      }
-    }
-    &__content{
-      max-width: 100%;
-    }
-  }
-}
-
-// HAPPY CLIENTS SECTION
-
-.happy-clients{
-  &-title{
-    text-align: center;
-    margin-bottom: 70px;
-    .title{
-      text-align: center;
-      margin-bottom: 17px;
-    }
-  }
-  &-row{
-    @include d-flex();
-  }
-  &-slider{
-    max-width: 60%;
-    width: 100%;
-    @include d-flex();
-    position: relative;
-    .slider{
-     width: 100%;
-    }
-    .clients-images{
-      max-width: 32%;
-      width: 100%;
-    }
-    .slick-dots{
-      display: flex;
-      position: absolute;
-      left: 400px;
-      bottom: 25px;
-      li{
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        margin: 0 12px;
-        background: #E7F0FC;
-        &:hover{
-          cursor: pointer;
-          border-color: $c-main-button;
-        }
-        &.slick-active{
-          background: $c-main-button;
-        }
-        button{
-          font-size: 0;
-          line-height: 0;
-        }
-      }
-    }
-  }
-  &-photos{
-    position: relative;
-    max-width: 35%;
-    min-height: 380px;
-    width: 100%;
-    &::after{
-      @include pseudo ();
-      @include border-radius(md);
-      width: 184px;
-      height: 184px;
-      left: 13%;
-      top: 32%;
-      z-index: -1;
-      background: #FFF5DB;
-    }
-    img{
-      position: absolute;
-      @include border-radius(md);
-      &:first-child{
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-      &:nth-child(2){
-        left: 48%;
-        top: 0;
-      }
-      &:nth-child(3){
-        right: 9px;
-        top: 50px;
-      }
-      &:nth-child(4){
-        left: 62px;
-        top: 46px;
-      }
-      &:nth-child(5){
-        right: 13px;
-        top: 43%;
-      }
-      &:nth-child(6){
-        right: 84px;
-        top: 75%;
-      }
-      &:nth-child(7){
-        left: 30%;
-        bottom: 0;
-      }
-      &:nth-child(8){
-        left: 0;
-        bottom: 33%;
-      }
-    }
-  }
-  @media screen and (max-width: 1200px){
-    &-row{
-      flex-direction: column;
-    }
-    &-slider{
-      max-width: 100%;
-      margin-bottom: 24px;
-      .slick-dots{
-        position: static;
-        justify-content: center;
-        margin: 1rem auto 30px;
-      }
-    }
-    &-photos{
-      max-width: 400px;
-    }
-  }
-  
-}
-.person{
-  @include d-flex();
-  &__photo{
-    width: 380px;
-    height: 380px;
-    img{
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 500px 0px 500px 500px;
-    }
-  }
-  &__information{
-    width: calc(100% - 420px);
-    .title{
-      font: 600 1.5rem/1.25 $f-main;
-      margin-bottom: 20px;
-      color: $c-main;
-    }
-    .text{
-      line-height: 1.6;
-      color: $c-secondary;
-    }
-  }
-  @media screen and (max-width: 767px){
-    flex-direction: column;
-    &__photo{
-      width: 320px;
-      height: 320px;
-    }
-    &__information{
-      width: 100%;
-    }
-  }
-}
-
-// NEWSLETTER SECTION
-.newsletter{
-  @include d-flex();
-  background: #F4F9FF;
-  border-radius: 75px;
-  position: relative;
-  padding-bottom: 100px;
-  &:before{
-    @include pseudo();
-    width: 178px;
-    height: 178px;
-    z-index: -1;
-    left: -30px;
-    bottom: -30px;
-    background: #FFF5DB;
-    border-radius: 0px 0px 100px 0px;
-    transform: rotate(90deg);
-  }
-  &__content{
-    width: 50%;
-    padding: 100px 20px 100px 100px;
-    .title{
-      margin-bottom: 1rem;
-    }
-    .subtitle{
-      font: 400 1.125rem/1.61 $f-main;
-      color: $c-text;
-    }
-  }
-  &__form{
-    width: 45%;
-    border-radius: 122px 75px 75px 62px;
-    min-height: 300px;
-    background: $c-main-button;
-    position: relative;
-    .input-wrapper{
-      @include d-flex();
-      position: absolute;
-      width: 90%;
-      left: -20px;
-      top: 50%;
-      transform: translate(-45px, -51%);
-      background: #FFFFFF;
-      border: 1px solid #F1F1F1;
-      padding: 10px;
-      box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.15);
-      border-radius: 60px;
-      input{
-        padding-left: 34px;
-      }
-    }
-  }
-  @media screen and (max-width: 767px){
-    flex-direction: column;
-    &__content{
-      width: 100%;
-      padding: 50px 40px 20px;
-      .title{
-        text-align: center;
-      }
-    }
-    &__form{
-      width: 100%;
-      padding: 100px 0;
-      .input-wrapper{
-        position: static;
-        transform: translate(15px, 0);
-        flex-direction: column;
-        input{
-          height: 26px;
-          margin: 8px 0;
-        }
-      }
-    }
-  }
-}

@@ -1,14 +1,19 @@
 
 /* font */
 
-$f-main:        'Averta Demo PE Cutted Demo', sans-serif;
+$f-main:        'Source Sans Pro', sans-serif;
 
 /* colors */
 
-$c-main:            #000000;
-$c-secondary:       #565656;
-$c-text:            #757575;
-$c-main-button:     #2639ED;
+$c-main:          #fff;
+$c-secondary:     #71768E;
+$c-text:          #A0A3B5;
+$c-yellow:        #FF9429;
+$c-blue:          #067CCB;
+$bg-main:         #101932;
+
+$c-main-button:   #E11D2E;
+
 
 
 /* mixins */
@@ -17,7 +22,11 @@ $c-main-button:     #2639ED;
     display: flex;
     align-items: $align-item;
     justify-content: $justify-content;
-  }
+}
+@mixin d-flex-col() {
+  display: flex;
+  flex-direction: column;
+}
 
 
 @mixin pseudo($display: block, $pos: absolute, $content: ''){
@@ -27,26 +36,66 @@ $c-main-button:     #2639ED;
  }
 
 
-// xs = 40px;
-// sm = 60px
-// md = 50%
+// xs = 10px
+// sm = 15px
+// md = 20px
+// lg =  30px
+// xl = 50px
 
 @mixin border-radius($radius: xs) {
   @if $radius == xs {
-    border-radius: 40px;
+    border-radius: 10px;
   } @else if $radius == sm {
-    border-radius: 60px;
+    border-radius: 15px;
   } @else if $radius == md {
-    border-radius: 50%;
-  } @else {
+    border-radius: 20px;
+  } @else if $radius == lg {
+    border-radius: 30px;
+  }@else if $radius == xl {
+    border-radius: 50px;
+  }@else {
     border-radius: $radius;
   }
 }
 
-// @mixin position($position, $top: inherit, $right: inherit, $bottom: inherit, $left: inherit) {
-//   position: $position;
-//   top: $top;
-//   right: $right;
-//   bottom: $bottom;
-//   left: $left;
-// }
+@mixin position($position, $top: inherit, $right: inherit, $bottom: inherit, $left: inherit) {
+   position: $position;
+   top: $top;
+   right: $right;
+   bottom: $bottom;
+   left: $left;
+ }
+
+
+ // keyframe
+
+ @-webkit-keyframes scroll {
+  0% {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+  }
+  100% {
+      -webkit-transform: translate(-100%, 0);
+      transform: translate(-100%, 0)
+  }
+}
+
+@-moz-keyframes scroll {
+  0% {
+      -moz-transform: translate(0, 0);
+      transform: translate(0, 0);
+  }
+  100% {
+      -moz-transform: translate(-100%, 0);
+      transform: translate(-100%, 0)
+  }
+}
+
+@keyframes scroll {
+  0% {
+      transform: translate(0, 0);
+  }
+  100% {
+      transform: translate(-100%, 0)
+  }
+}
